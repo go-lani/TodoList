@@ -5,7 +5,14 @@ const $todos = document.querySelector('#todos');
 function addTodo(value) {
   if (!value) return alert('해야할 일을 입력해주세요.');
 
-  $todos.innerHTML += `<li class="todos"><label><input type="checkbox">${value}</label><button type="button" class="delete-btn">삭제</button></button></li>`;
+  $todos.innerHTML += `<li class="todos">
+                        <label class="check-label">
+                          <input type="checkbox">
+                          <span>${value}</span>
+                        </label>
+                        <button type="button" class="delete-btn">삭제</button>
+                      </li>`;
+
   $input.value = '';
   $input.focus();
 }
