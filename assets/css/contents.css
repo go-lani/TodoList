@@ -13,6 +13,42 @@ main {
   font-size: 1.8rem;
 }
 
+.register-area {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 700;
+  font-size: 8rem;
+  line-height: 100px;
+  color: #ffff;
+}
+
+
+#add-input {
+  width: 400px;
+  height: 100px;
+  margin: 0 24px;
+  border-width: 0 0 6px;
+  border-style: solid;
+  border-color: #ffffff;
+  background: none;
+  font-size: 8rem;
+  color: #ffffff;
+}
+
+.todo-list-area {
+  max-width: 30vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.todo-list-area .title {
+  font-size: 3rem;
+}
+
+#todos li {
+  font-size: 2.6rem;
+  color: #ffffff;
+}
 
 /* 모바일 해상도일때 */
 @media all and (max-width: 768px) {
