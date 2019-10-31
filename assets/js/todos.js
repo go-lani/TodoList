@@ -1,11 +1,11 @@
 const $input = document.querySelector('#add-input');
 const $addBtn = document.querySelector('#add-btn');
-const $ul = document.querySelector('#todos');
+const $todos = document.querySelector('#todos');
 
 function addTodo(value) {
-  if (!$input.value) return alert('해야할 일을 입력해주세요.');
+  if (!value) return alert('해야할 일을 입력해주세요.');
 
-  $ul.innerHTML += `<li class="todos"><label><input type="checkbox">${value}</label><button type="button">삭제</button></button></li>`;
+  $todos.innerHTML += `<li class="todos"><label><input type="checkbox">${value}</label><button type="button" class="delete-btn">삭제</button></button></li>`;
   $input.value = '';
   $input.focus();
 }
@@ -18,4 +18,11 @@ $input.addEventListener('keyup', function (e) {
   if (!(e.keyCode === 13)) return;
 
   addTodo($input.value);
+});
+
+$todos.addEventListener('click', function (e) {
+  if (!(e.target.classList.contains('delete-btn'))) return;
+
+  e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+  $input.focus();
 });

@@ -13,40 +13,6 @@ main {
   font-size: 1.8rem;
 }
 
-#btn-add {
-  display: block;
-  font-weight: 700;
-  font-size: 20rem;
-  letter-spacing: -0.05em;
-  text-align: center;
-  color: #ffffff;
-  transition: color .3s;
-}
-
-#btn-add:hover {color: #d83c8b;}
-
-#food-input {
-  max-width: 500px;
-  height: auto;
-  border-width: 0 0 10px;
-  border-style: solid;
-  border-color: #ffffff;
-  background: none;
-  font-size: 10rem;
-  color: #ffffff;
-  text-align: center;
-}
-
-.point-color {
-  display: inline-block;
-  color: #919ccc;
-}
-
-.food {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
 
 /* 모바일 해상도일때 */
 @media all and (max-width: 768px) {
