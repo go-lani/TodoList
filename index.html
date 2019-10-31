@@ -9,10 +9,16 @@
 </head>
 <body>
   <main role="main">
-    <h1>오늘 해야할 일!</h1>
-    <input type="text" id="add-input">
-    <button type="button" id="add-btn">추가</button>
-    <ul id="todos"></ul>
+    <section class="todo-container">
+        <div class="register-area">
+          <h1>나는 오늘!</h1>
+          <input type="text" id="add-input">
+          <button type="button" id="add-btn">할거야!</button>
+        </div>
+        <div class="todo-list-area">
+            <ul id="todos"></ul>
+        </div>
+    </section>
   </main>
   <script src="./assets/js/todos.js"></script>
 </body>
