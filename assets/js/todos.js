@@ -30,6 +30,6 @@ $input.addEventListener('keyup', function (e) {
 $todos.addEventListener('click', function (e) {
   if (!(e.target.classList.contains('delete-btn'))) return;
 
-  e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+  this.removeChild(e.target.parentNode);
   $input.focus();
 });
