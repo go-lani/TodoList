@@ -3,7 +3,7 @@ const $addBtn = document.querySelector('#add-btn');
 const $todos = document.querySelector('#todos');
 
 function addTodo(value) {
-  if (!value) return alert('해야할 일을 입력해주세요.');
+  if (!value.value.trim() === '') return alert('해야할 일을 입력해주세요.');
 
   $todos.innerHTML += `<li class="todos">
                         <label class="check-label">
