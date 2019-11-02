@@ -1,4 +1,4 @@
-
+let todos = [];
 const $input = document.querySelector('#add-input');
 const $addBtn = document.querySelector('#add-btn');
 const $todos = document.querySelector('#todos');
@@ -34,45 +34,28 @@ const getTodo = function () {
   render();
 };
 
-const numberCheck = function () {
-  let num = null;
-
-  if (todos.length > 0) {
-    num = Math.max(...todos.map(todo => todo.id)) + 1;
-  } else {
-    num = 1;
-  }
-
-  return num;
-};
-
-const addTodoEnter = function (e) {
+const addTodo = function () {
   const value = $input.value.trim();
-
-  if (e.keyCode !== 13) return;
 
   if (value === '') return alert('해야할 일을 입력해주세요.');
 
-  const lastNum = numberCheck();
+  const num = Math.max(0, ...todos.map(todo => todo.id)) + 1;
 
-  todos = [...todos, { id: lastNum, content: value, completed: false }];
+  todos = [...todos, { id:num, content: value, completed: false }];
 
   $input.value = '';
   $input.focus();
+};
+
+const addTodoEnter = function (e) {
+  if (e.keyCode !== 13) return;
+
+  addTodo();
   render();
 };
 
 const addTodoClick = function () {
-  const value = $input.value.trim();
-
-  if (value === '') return alert('해야할 일을 입력해주세요.');
-
-  const lastNum = numberCheck();
-
-  todos = [...todos, { id: lastNum, content: value, completed: false }];
-
-  $input.value = '';
-  $input.focus();
+  addTodo();
   render();
 };
 
