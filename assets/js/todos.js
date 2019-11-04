@@ -27,6 +27,10 @@ const separateTodo = (view) => {
     case 'all':
       break;
 
+<<<<<<< HEAD
+const render = function () {
+  let html = ''; // innerHtml은 문자열을 받으므로 text로 받는다.
+=======
     case 'active':
       todos = [...todos].filter(todo => !todo.completed);
       break;
@@ -34,6 +38,7 @@ const separateTodo = (view) => {
     case 'completed':
       todos = [...todos].filter(todo => todo.completed);
       break;
+>>>>>>> release/v0.0.2.00191104001
 
     default:
       break;
@@ -58,7 +63,6 @@ const render = () => {
       </li>
     `;
   });
-
 
   $todos.innerHTML = html;
   $activeTodos.textContent = todos.filter(todo => !todo.completed).length;
@@ -85,9 +89,13 @@ const changeAll = (completed) => {
   todos = todos.map(todo => ({ ...todo, completed }));
 };
 
+<<<<<<< HEAD
+  todos = [...todos, { id: num, content: value, completed: false }];
+=======
 const clearCompletedAll = () => {
   todos = todos.filter(todo => !todo.completed);
 };
+>>>>>>> release/v0.0.2.00191104001
 
 // Events
 window.onload = () => {
