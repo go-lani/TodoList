@@ -1,17 +1,63 @@
 let todos = [];
-const $input = document.querySelector('#add-input');
-const $addBtn = document.querySelector('#add-btn');
-const $todos = document.querySelector('#todos');
+let temp = [];
 
+// DOMs
+const $todos = document.querySelector('#todos');
+const $input = document.querySelector('#add-input');
+const $completedAll = document.querySelector('#complete-all');
+const $clearCompleted = document.querySelector('.clear-completed');
+const $completedTodos = document.querySelector('.completed-todos');
+const $activeTodos = document.querySelector('.active-todos');
+const $nav = document.querySelector('.tab');
+let type = 'all';
+
+// Func
+const getTodos = () => {
+  todos = [
+    { id: 1, content: 'HTML', completed: false },
+    { id: 2, content: 'CSS', completed: true },
+    { id: 3, content: 'Javasript', completed: false },
+  ];
+
+  todos.sort((todoA, todoB) => todoB.id - todoA.id);
+};
+
+const separateTodo = (view) => {
+  switch (view) {
+    case 'all':
+      break;
+
+<<<<<<< HEAD
 const render = function () {
   let html = ''; // innerHtml은 문자열을 받으므로 text로 받는다.
+=======
+    case 'active':
+      todos = [...todos].filter(todo => !todo.completed);
+      break;
 
-  todos.forEach(todo => { // todos를 참조할 수 있다. 전역 변수이기 때문에
+    case 'completed':
+      todos = [...todos].filter(todo => todo.completed);
+      break;
+>>>>>>> release/v0.0.2.00191104001
+
+    default:
+      break;
+  }
+  return todos;
+};
+
+const render = () => {
+  temp = todos;
+  let html = '';
+
+  todos = separateTodo(type);
+
+  todos.forEach(({ id, content, completed }) => {
     html += `
-      <li id="${todo.id}">
-        <label class="check-label">
-          <input type="checkbox" class="check-complete" ${todo.completed ? 'checked' : ''}>
-          <span class="content">${todo.content}</span>
+      <li id="${id}">
+        <label class="check-label" for="ck-${id}">
+          <input type="checkbox" class="check-complete" id="ck-${id}" ${completed ? 'checked' : ''}>
+          <span class="content">${content}</span>
         </label>
         <button type="button" class="delete-button">X</button>
       </li>
@@ -19,66 +65,84 @@ const render = function () {
   });
 
   $todos.innerHTML = html;
+  $activeTodos.textContent = todos.filter(todo => !todo.completed).length;
+  $completedTodos.textContent = todos.filter(todo => todo.completed).length;
+  todos = temp;
 };
 
-const getTodo = function () {
-  // TODO: 서버로부터 todos 데이터를 취득
-  todos = [
-    { id: 1, content: 'HTML', completed: false },
-    { id: 2, content: 'CSS', completed: true },
-    { id: 3, content: 'Javascript', completed: false }
-  ];
 
-  render();
+const findId = () => Math.max(0, ...todos.map(todo => todo.id)) + 1;
+
+const addTodo = (content) => {
+  todos = [{ id: findId(), content, completed: false }, ...todos];
 };
 
-const addTodo = function () {
-  const value = $input.value.trim();
+const removeTodo = (id) => {
+  todos = todos.filter(todo => todo.id !== id);
+};
 
-  if (value === '') return alert('해야할 일을 입력해주세요.');
+const changeComplete = (id) => {
+  todos = todos.map(todo => todo.id === id ? {...todo, completed : !todo.completed } : todo);
+};
 
-  const num = Math.max(0, ...todos.map(todo => todo.id)) + 1;
+const changeAll = (completed) => {
+  todos = todos.map(todo => ({ ...todo, completed }));
+};
 
+<<<<<<< HEAD
   todos = [...todos, { id: num, content: value, completed: false }];
-
-  $input.value = '';
-  $input.focus();
+=======
+const clearCompletedAll = () => {
+  todos = todos.filter(todo => !todo.completed);
 };
-
-const addTodoEnter = function (e) {
-  if (e.keyCode !== 13) return;
-
-  addTodo();
-  render();
-};
-
-const addTodoClick = function () {
-  addTodo();
-  render();
-};
-
-const toggleComplete = function (e) {
-  const id = e.target.parentNode.parentNode.id;
-
-  todos = todos.map(todo => todo.id === +id ? { ...todo, completed : !todo.completed } : todo);
-
-  render();
-};
-
-const removeTodo = function (e) {
-  if (!e.target.classList.contains('delete-button')) return;
-
-  const id = e.target.parentNode.id;
-
-  todos = todos.filter(todo => todo.id !== +id);
-
-  render();
-};
-
+>>>>>>> release/v0.0.2.00191104001
 
 // Events
-window.onload = getTodo;
-$input.onkeyup = addTodoEnter;
-$addBtn.onclick = addTodoClick;
-$todos.onchange = toggleComplete;
-$todos.onclick = removeTodo;
+window.onload = () => {
+  getTodos();
+  render();
+};
+
+$input.onkeyup = ({ target, keyCode }) => {
+  const content = target.value.trim();
+
+  if (content === '' || keyCode !== 13) return;
+
+  target.value = '';
+  addTodo(content);
+  render();
+};
+
+$todos.onclick = ({ target }) => {
+  if (!target.classList.contains('delete-button')) return;
+
+  removeTodo(+target.parentNode.id);
+  render();
+};
+
+$todos.onchange = ({ target }) => {
+  changeComplete(+target.parentNode.parentNode.id);
+  render();
+};
+
+$completedAll.onclick = ({ target }) => {
+  changeAll(target.checked);
+  render();
+};
+
+$clearCompleted.onclick = () => {
+  clearCompletedAll();
+  render();
+};
+
+$nav.onclick = ({ target }) => {
+  if (target.classList.contains('tab')) return;
+
+  type = target.id;
+
+  [...$nav.children].forEach($navItem => {
+    $navItem.classList.toggle('active', $navItem === target);
+  });
+
+  render();
+};
