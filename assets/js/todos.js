@@ -3,7 +3,6 @@ const $input = document.querySelector('#add-input');
 const $addBtn = document.querySelector('#add-btn');
 const $todos = document.querySelector('#todos');
 
-
 const render = function () {
   let html = ''; // innerHtml은 문자열을 받으므로 text로 받는다.
 
@@ -18,7 +17,6 @@ const render = function () {
       </li>
     `;
   });
-
 
   $todos.innerHTML = html;
 };
@@ -41,7 +39,7 @@ const addTodo = function () {
 
   const num = Math.max(0, ...todos.map(todo => todo.id)) + 1;
 
-  todos = [...todos, { id:num, content: value, completed: false }];
+  todos = [...todos, { id: num, content: value, completed: false }];
 
   $input.value = '';
   $input.focus();
