@@ -200,6 +200,15 @@ main {
   background: #ea2929;
 }
 
+.clear-completed strong {
+  margin: 0 0 0 10px;
+}
+
+.active-todos {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+
 /* 모바일 해상도일때 */
 @media all and (max-width: 768px) {
 
