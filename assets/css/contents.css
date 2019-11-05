@@ -103,7 +103,6 @@ main {
   margin: 0;
 }
 
-
 .check-label {
   display: inline-block;
   position: relative;
@@ -152,6 +151,53 @@ main {
   height: 24px;
   background: url(../images/delete.png) center center no-repeat;
   text-indent: -999em;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0 0;
+}
+
+.complete-all-box {
+  position: relative;
+}
+
+.complete-all-box label {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
+  background: #3c58d2;
+  color: #ffffff;
+}
+
+#complete-all {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  background: #000000;
+}
+
+#complete-all:checked ~ label {
+  border-radius: 5px;
+  background: #ffffff;
+  color: #3c58d2;
+}
+
+.clear-completed {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+
+.clear-completed .btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #ea2929;
 }
 
 /* 모바일 해상도일때 */
