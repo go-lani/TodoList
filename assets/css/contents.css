@@ -78,7 +78,7 @@ main {
 
 }
 
-.todo-list-area h2 {
+.todo-list-area .title {
   font-weight: 700;
   font-size: 3.8rem;
   color: #ffffff;
