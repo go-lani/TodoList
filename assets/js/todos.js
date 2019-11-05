@@ -1,15 +1,16 @@
 let todos = [];
 let temp = [];
+let type = 'all';
 
 // DOMs
 const $todos = document.querySelector('#todos');
 const $input = document.querySelector('#add-input');
+const $addButton = document.querySelector('#add-btn');
 const $completedAll = document.querySelector('#complete-all');
 const $clearCompleted = document.querySelector('.clear-completed');
 const $completedTodos = document.querySelector('.completed-todos');
 const $activeTodos = document.querySelector('.active-todos');
 const $nav = document.querySelector('.tab');
-let type = 'all';
 
 // Func
 const getTodos = () => {
@@ -136,4 +137,15 @@ $nav.onclick = ({ target }) => {
   });
 
   render();
+};
+
+$addButton.onclick = () => {
+  const content = $input.value.trim();
+
+  if (content === '') return;
+
+  $input.value = '';
+  addTodo(content);
+  render();
+  $input.focus();
 };
