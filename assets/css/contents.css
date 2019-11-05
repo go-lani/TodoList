@@ -18,9 +18,8 @@ main {
 .register-area {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   font-weight: 700;
-  font-size: 8rem;
-  line-height: 100px;
   color: #ffff;
 }
 
@@ -34,19 +33,16 @@ main {
 
 #add-input {
   width: 30vw;
-  height: 100px;
-  margin: 0 24px;
   border-width: 0 0 6px;
   border-style: solid;
   border-color: #ffffff;
   background: none;
-  font-size: 8rem;
   color: #ffffff;
 }
 
 .todo-list-area {
-  max-width: 40vw;
-  margin: 100px auto;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
@@ -211,14 +207,66 @@ main {
 
 /* 모바일 해상도일때 */
 @media all and (max-width: 768px) {
+  main {
+    padding: 50px 0 0;
+  }
 
+  .register-area {
+    font-size: 3rem;
+  }
+
+  #add-input {
+    width: 25vw;
+    margin: 80px 0;
+    border-bottom: 3px solid #ffffff;
+  }
+
+  .todo-list-area {
+    width: 80vw;
+  }
+
+  .status {
+    flex-direction: column;
+  }
+
+  .status > * {
+    margin: 20px 0;
+  }
 }
 
 /* 태블릿 해상도일때 */
 @media all and (min-width: 769px) and (max-width: 1024px) {
+  .register-area {
+    font-size: 6rem;
+    line-height: 80px;
+  }
+
+  #add-input {
+    height: 80px;
+  }
+
+  .todo-list-area {
+    width: 80vw;
+    max-width: initial;
+    margin-top: 80px;
+  }
 }
 
 /* PC 해상도일때 */
 @media all and (min-width: 1025px) {
+  .register-area {
+    font-size: 8rem;
+    line-height: 100px;
+  }
 
+  #add-input {
+    height: 100px;
+    margin: 0 24px;
+    font-size: 8rem;
+  }
+
+  .todo-list-area {
+    max-width: 40vw;
+    margin-top: 100px;
+  }
 }
