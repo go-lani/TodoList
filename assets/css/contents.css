@@ -190,7 +190,7 @@ main {
   color: #ffffff;
 }
 
-.clear-completed .btn {
+.clear-completed .clear-btn {
   padding: 5px 10px;
   border-radius: 5px;
   background: #ea2929;
