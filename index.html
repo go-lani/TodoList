@@ -11,6 +11,8 @@
   <main role="main">
     <section class="todo-container">
       <h1 class="a11y-hidden">Todolist 영역</h1>
+      <div class="today">0000년 00월 00일</div>
+      <div class="current-time">00시 00분 00초</div>
       <div class="register-area">
         <p>나는 오늘</p>
         <input type="text" id="add-input">
@@ -28,11 +30,11 @@
 
           <div class="status">
             <div class="complete-all-box">
-              <input class="checkbox" type="checkbox" id="complete-all">
+              <input class="all-checkbox" type="checkbox" id="complete-all">
               <label for="complete-all">all complete</label>
             </div>
             <div class="clear-completed">
-              <button class="btn">Clear completed (<span class="completed-todos">0</span>)</button>
+              <button class="clear-btn">Clear completed (<span class="completed-todos">0</span>)</button>
               <strong><span class="active-todos">0</span>items left</strong>
             </div>
           </div>
@@ -40,5 +42,6 @@
     </section>
   </main>
   <script src="./assets/js/todos.js"></script>
+  <script src="./assets/js/time.js"></script>
 </body>
 </html>

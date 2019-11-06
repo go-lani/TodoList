@@ -1,6 +1,5 @@
 let todos = [];
-let temp = [];
-let type = 'all';
+let category = 'all';
 
 // DOMs
 const $todos = document.querySelector('#todos');
@@ -23,32 +22,12 @@ const getTodos = () => {
   todos.sort((todoA, todoB) => todoB.id - todoA.id);
 };
 
-const separateTodo = (view) => {
-  switch (view) {
-    case 'all':
-      break;
-
-    case 'active':
-      todos = [...todos].filter(todo => !todo.completed);
-      break;
-
-    case 'completed':
-      todos = [...todos].filter(todo => todo.completed);
-      break;
-
-    default:
-      break;
-  }
-  return todos;
-};
-
 const render = () => {
-  temp = todos;
   let html = '';
 
-  todos = separateTodo(type);
+  const _todos = todos.filter(todo => category === 'all' ? true : (category === 'active' ? !todo.completed : todo.completed));
 
-  todos.forEach(({ id, content, completed }) => {
+  _todos.forEach(({ id, content, completed }) => {
     html += `
       <li id="${id}">
         <label class="check-label" for="ck-${id}">
@@ -63,9 +42,7 @@ const render = () => {
   $todos.innerHTML = html;
   $activeTodos.textContent = todos.filter(todo => !todo.completed).length;
   $completedTodos.textContent = todos.filter(todo => todo.completed).length;
-  todos = temp;
 };
-
 
 const findId = () => Math.max(0, ...todos.map(todo => todo.id)) + 1;
 
@@ -130,7 +107,7 @@ $clearCompleted.onclick = () => {
 $nav.onclick = ({ target }) => {
   if (target.classList.contains('tab')) return;
 
-  type = target.id;
+  category = target.id;
 
   [...$nav.children].forEach($navItem => {
     $navItem.classList.toggle('active', $navItem === target);
