@@ -11,7 +11,7 @@ main {
   align-items: center;
   min-height: 100vh;
   padding: 150px 0;
-  background: #3c58d2;
+  background: #6D97A2;
   font-size: 1.8rem;
 }
 
@@ -174,7 +174,7 @@ main {
   padding: 5px 10px;
   border-radius: 5px;
   border: 2px solid #ffffff;
-  background: #3c58d2;
+  background: transparent;
   color: #ffffff;
 }
 

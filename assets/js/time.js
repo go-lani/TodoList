@@ -1,7 +1,7 @@
 const date = new Date();
-let year = date.getFullYear();
-let month = date.getMonth();
-let day = date.getDay();
+const year = date.getFullYear();
+const month = date.getMonth() + 1;
+let day = date.getDay() + 1;
 
 let hour = date.getHours();
 let minute = date.getMinutes();
@@ -11,8 +11,12 @@ const $today = document.querySelector('.today');
 const $currentTime = document.querySelector('.current-time');
 
 const setCurrent = () => {
-  $today.textContent = `${year}년 ${month < 10 ? '0'+ month : month}월 ${day < 10 ? '0'+ day : day}일`;
-  $currentTime.textContent = `${hour < 10 ? '0' + hour : hour}시 ${minute < 10 ? '0' + minute : minute}분 ${second < 10 ? '0' + second : second}초`;
+  $today.textContent = `${year}년 ${month < 10 ? '0' + month : month}월 ${
+    day < 10 ? '0' + day : day
+  }일`;
+  $currentTime.textContent = `${hour < 10 ? '0' + hour : hour}시 ${
+    minute < 10 ? '0' + minute : minute
+  }분 ${second < 10 ? '0' + second : second}초`;
 };
 
 const currentTime = () => {
@@ -32,12 +36,17 @@ const currentTime = () => {
     }
   }
 
-  $today.textContent = `${year}년 ${month < 10 ? '0'+ month : month}월 ${day < 10 ? '0'+ day : day}일`;
-  $currentTime.textContent = `${hour < 10 ? '0' + hour : hour}시 ${minute < 10 ? '0' + minute : minute}분 ${second < 10 ? '0' + second : second}초`;
+  $today.textContent = `${year}년 ${month < 10 ? '0' + month : month}월 ${
+    day < 10 ? '0' + day : day
+  }일`;
+  $currentTime.textContent = `${hour < 10 ? '0' + hour : hour}시 ${
+    minute < 10 ? '0' + minute : minute
+  }분 ${second < 10 ? '0' + second : second}초`;
 };
 
+console.log(year, month, day);
 setCurrent();
 
-setInterval(function () {
+setInterval(function() {
   currentTime();
 }, 1000);
